@@ -16,20 +16,21 @@ def is_letter(char: str) -> bool:
 
     For internal use by the lexer only.
     """
-    return char.isascii() and char.isalpha()
-
+    # return char.isascii() and char.isalpha()
+    return char.isidentifier()
 
 def is_name_start(char: str) -> bool:
     """Check whether char is allowed at the beginning of a GraphQL name
 
     For internal use by the lexer only.
     """
-    return char.isascii() and (char.isalpha() or char == "_")
-
+    # return char.isascii() and (char.isalpha() or char == "_")
+    return char.isidentifier() or (char.isalpha() or char == "_")
 
 def is_name_continue(char: str) -> bool:
     """Check whether char is allowed in the continuation of a GraphQL name
 
     For internal use by the lexer only.
     """
-    return char.isascii() and (char.isalnum() or char == "_")
+    # return char.isascii() and (char.isalnum() or char == "_")
+    return char.isidentifier() or char.isalnum() or char == "_"
